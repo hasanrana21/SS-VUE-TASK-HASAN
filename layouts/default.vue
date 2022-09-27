@@ -1,12 +1,15 @@
 <template>
   <v-app>
+    <navbar></navbar>
     <Nuxt />
   </v-app>
 </template>
 
 <script>
+import Navbar from '@/components/ui/navbar/index.vue'
 export default {
   name: 'DefaultLayout',
+  components: { Navbar },
   data() {
     return {
       clipped: false,
