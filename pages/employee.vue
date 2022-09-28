@@ -1,55 +1,71 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col v-for="(item, key) in this.list" :key="key" cols="4">
-        <ui-card :data="item"></ui-card>
-      </v-col>
-    </v-row>
+    <ui-table :headers="this.headers">
+      <template #header> 
+        <ui-button label="Add New"></ui-button>  
+      </template>
+      <tr v-for="(item, key) in data" :key="key">
+        <td class="title font-weight-regular py-4">{{ item.name }}</td>
+        <td class="title font-weight-regular py-4">{{ item.type }}</td>
+        <td class="title font-weight-regular py-4">{{ item.email }}</td>
+        <td class="title font-weight-regular py-4">{{ item.title }}</td>
+        <td class="title font-weight-regular py-4">
+          <span
+            class="mdi mdi-square-edit-outline headline mr-6"
+            style="cursor: pointer"
+          ></span>
+          <span
+            class="mdi mdi-trash-can-outline headline"
+            style="cursor: pointer"
+          ></span>
+        </td>
+      </tr>
+    </ui-table>
   </v-container>
 </template>
 <script>
-import UiCard from '@/components/ui/card/index.vue'
+import UiTable from '@/components/ui/table/index.vue'
+import UiButton from '@/components/ui/button/index.vue'
 export default {
   name: 'employee',
-  components: { UiCard },
+  components: { UiTable, UiButton },
   data() {
     return {
-      list: [
+      data: [
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          name: 'Rahim',
+          type: 'Admin',
+          email: 'rahim@gmail.com',
+          title: 'Sr. Frontend Developer',
         },
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          name: 'Karim',
+          type: 'Employee',
+          email: 'karim@gmail.com',
+          title: 'Sr. Backend Developer',
         },
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          name: 'Kuddus',
+          type: 'Employee',
+          email: 'kuddus@gmail.com',
+          title: 'Team Lead',
+        },
+      ],
+      headers: [
+        {
+          label: 'Name',
         },
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          label: 'Type',
         },
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          label: 'Email',
         },
         {
-          title: 'Title',
-          description:
-            'Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well.',
-          name: 'Even You',
+          label: 'Title',
+        },
+        {
+          label: 'Action',
         },
       ],
     }
