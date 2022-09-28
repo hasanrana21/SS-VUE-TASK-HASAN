@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex justify-end">
+    <div class="d-flex justify-space-between align-center mb-2">
       <slot name="header"/>
     </div>
     <v-simple-table>
