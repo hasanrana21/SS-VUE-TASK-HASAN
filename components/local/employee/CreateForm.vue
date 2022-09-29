@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="createEmployee">
+  <form ref="form" @submit.prevent="createEmployee">
     <h2 class="display-1 mb-7 mt-2">Employee Create Form</h2>
     <v-text-field
       v-model="formData.name"
@@ -36,6 +36,7 @@
 </template>
 <script>
 import UiButton from '@/components/ui/button/index.vue'
+// import { store } from '@/store'
 export default {
   name: 'employee-create-form',
   components: { UiButton },
@@ -47,7 +48,14 @@ export default {
         phone: '',
         type: '',
       },
-      items: ['Admin', 'Employee'],
+      items: [
+        'CEO',
+        'CTO',
+        'Frontend Developer',
+        'Backend Developer',
+        'Project Manager',
+        'Team Lead',
+      ],
       useValidation: {
         nameRules: [(v) => !!v || 'Name is required'],
 
@@ -64,7 +72,11 @@ export default {
   },
   methods: {
     createEmployee() {
-      console.log('created employee', this.formData)
+      this.$store.commit('Employee/setEmployee', this.formData)
+      this.reset()
+    },
+    reset() {
+      this.$refs.form.reset();
     },
   },
 }

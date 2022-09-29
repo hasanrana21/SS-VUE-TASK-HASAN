@@ -47,7 +47,14 @@
           phone: '',
           type: '',
         },
-        items: ['Admin', 'Employee'],
+        items: [
+        'CEO',
+        'CTO',
+        'Frontend Developer',
+        'Backend Developer',
+        'Project Manager',
+        'Team Lead',
+      ],
         useValidation: {
           nameRules: [(v) => !!v || 'Name is required'],
   
