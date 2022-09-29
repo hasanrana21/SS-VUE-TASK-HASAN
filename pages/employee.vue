@@ -12,7 +12,7 @@
         <td class="title font-weight-regular py-4">{{ item.name }}</td>
         <td class="title font-weight-regular py-4">{{ item.type }}</td>
         <td class="title font-weight-regular py-4">{{ item.email }}</td>
-        <td class="title font-weight-regular py-4">{{ item.title }}</td>
+        <td class="title font-weight-regular py-4">{{ item.phone }}</td>
         <td class="title font-weight-regular py-4">
           <span
             class="mdi mdi-square-edit-outline headline mr-6"
@@ -45,19 +45,19 @@ export default {
           name: 'Rahim',
           type: 'Admin',
           email: 'rahim@gmail.com',
-          title: 'Sr. Frontend Developer',
+          phone: '01866389828',
         },
         {
           name: 'Karim',
           type: 'Employee',
           email: 'karim@gmail.com',
-          title: 'Sr. Backend Developer',
+          phone: '01666389828',
         },
         {
           name: 'Kuddus',
           type: 'Employee',
           email: 'kuddus@gmail.com',
-          title: 'Team Lead',
+          phone: '01766389828',
         },
       ],
       headers: [
@@ -71,7 +71,7 @@ export default {
           label: 'Email',
         },
         {
-          label: 'Title',
+          label: 'Phone',
         },
         {
           label: 'Action',
