@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <!-- SHOW EMPLOYEE LISTS -->
-    <ui-table v-if="!this.openCreateForm" :headers="this.headers">
+    <ui-table
+      v-if="!this.openCreateForm && !this.openUpdateForm"
+      :headers="this.headers"
+    >
       <template #header>
         <span class="headline">Employee Lists</span>
         <span @click="openForm()">
@@ -10,13 +13,14 @@
       </template>
       <tr v-for="(item, key) in data" :key="key">
         <td class="title font-weight-regular py-4">{{ item.name }}</td>
-        <td class="title font-weight-regular py-4">{{ item.type }}</td>
+        <td class="title font-weight-regular py-4">{{ item.title }}</td>
         <td class="title font-weight-regular py-4">{{ item.email }}</td>
         <td class="title font-weight-regular py-4">{{ item.phone }}</td>
         <td class="title font-weight-regular py-4">
           <span
             class="mdi mdi-square-edit-outline headline mr-6"
             style="cursor: pointer"
+            @click="openUpdateForm = true"
           ></span>
           <span
             class="mdi mdi-trash-can-outline headline"
@@ -27,35 +31,46 @@
     </ui-table>
 
     <!-- EMPLOYEE CREATE FORM -->
-    <employee-create-form v-else @cancel="handleCancel"></employee-create-form>
+    <employee-create-form
+      v-if="this.openCreateForm"
+      @cancel="handleCancel"
+    ></employee-create-form>
+
+    <!-- EMPLOYEE UPDATE FORM -->
+    <employee-update-form
+      v-if="this.openUpdateForm"
+      @cancel="handleCancel"
+    ></employee-update-form>
   </v-container>
 </template>
 <script>
 import UiTable from '@/components/ui/table/index.vue'
 import UiButton from '@/components/ui/button/index.vue'
 import EmployeeCreateForm from '@/components/local/employee/CreateForm.vue'
+import EmployeeUpdateForm from '@/components/local/employee/UpdateForm.vue'
 export default {
   name: 'employee',
-  components: { UiTable, UiButton, EmployeeCreateForm },
+  components: { UiTable, UiButton, EmployeeCreateForm, EmployeeUpdateForm },
   data() {
     return {
       openCreateForm: false,
+      openUpdateForm: false,
       data: [
         {
           name: 'Rahim',
-          type: 'Admin',
+          title: 'Frontend Developer',
           email: 'rahim@gmail.com',
           phone: '01866389828',
         },
         {
           name: 'Karim',
-          type: 'Employee',
+          title: 'Backend Developer',
           email: 'karim@gmail.com',
           phone: '01666389828',
         },
         {
           name: 'Kuddus',
-          type: 'Employee',
+          title: 'Backend Developer',
           email: 'kuddus@gmail.com',
           phone: '01766389828',
         },
@@ -65,7 +80,7 @@ export default {
           label: 'Name',
         },
         {
-          label: 'Type',
+          label: 'Title',
         },
         {
           label: 'Email',
@@ -86,6 +101,7 @@ export default {
     },
     handleCancel() {
       this.openCreateForm = false
+      this.openUpdateForm = false
     },
   },
 }

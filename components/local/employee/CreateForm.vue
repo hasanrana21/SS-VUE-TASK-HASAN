@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="createEmployee">
-    <h3>this is Employee Create Form</h3>
+    <h2 class="display-1 mb-7 mt-2">Employee Create Form</h2>
     <v-text-field
       v-model="formData.name"
       :rules="useValidation.nameRules"
@@ -36,7 +36,6 @@
 </template>
 <script>
 import UiButton from '@/components/ui/button/index.vue'
-// import UiInput from '@/components/ui/input/index.vue'
 export default {
   name: 'employee-create-form',
   components: { UiButton },
