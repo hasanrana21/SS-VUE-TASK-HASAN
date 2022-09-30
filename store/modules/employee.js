@@ -19,5 +19,8 @@ export default {
     clearEmployee: (state) => {
       state.employee = {}
     },
+    deleteEmployee: (state, data) => {
+      state.employeeLists = state.employeeLists.filter((item) => item?.id !== data?.id);
+    },
   },
 }

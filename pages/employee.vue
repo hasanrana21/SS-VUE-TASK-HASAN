@@ -25,6 +25,7 @@
           <span
             class="mdi mdi-trash-can-outline headline"
             style="cursor: pointer"
+            @click="employeeDelete(item)"
           ></span>
         </td>
       </tr>
@@ -97,6 +98,9 @@ export default {
       this.openCreateForm = false
       this.openUpdateForm = false
     },
+    employeeDelete(item){
+      this.$store.commit("Employee/deleteEmployee", item)
+    }
   },
   beforeMount() {
     let lists = this.$store.state.Employee.employeeLists
