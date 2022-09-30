@@ -23,6 +23,9 @@ export default {
             }
             return item;
         })
+    },
+    deleteAdmin:(state, data) => {
+      state.adminLists = state.adminLists.filter((item) => item?.id !== data?.id);
     }
   },
 }

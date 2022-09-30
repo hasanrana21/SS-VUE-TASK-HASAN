@@ -25,6 +25,7 @@
           <span
             class="mdi mdi-trash-can-outline headline"
             style="cursor: pointer"
+            @click="deleteAdmin(item)"
           ></span>
         </td>
       </tr>
@@ -97,6 +98,9 @@ export default {
       this.$store.commit("Admin/setAdmin", item);
       this.openUpdateForm = true;
     },
+    deleteAdmin(item){
+      this.$store.commit("Admin/deleteAdmin", item);
+    }
   },
   beforeMount() {
     this.data = this.$store.state.Admin.adminLists
