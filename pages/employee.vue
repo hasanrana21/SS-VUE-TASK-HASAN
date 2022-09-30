@@ -30,7 +30,7 @@
       </tr>
     </ui-table>
     <div v-if="!this.data.length" class="text-center pt-10">
-      <p class="headline">No Data Show</p>
+      <p class="headline">No Data Found</p>
     </div>
 
     <!-- EMPLOYEE CREATE FORM -->

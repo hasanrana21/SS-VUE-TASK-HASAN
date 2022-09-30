@@ -8,7 +8,7 @@ export default {
   mutations: {
     setEmployees: (state, data) => {
       data.id = state.employeeLists.length + 1
-      state.employeeLists.push(data)
+      state.employeeLists.unshift(data)
     },
     setEmployee: (state, data) => {
       state.employee = data

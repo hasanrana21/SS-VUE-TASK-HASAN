@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <!-- SHOW EMPLOYEE LISTS -->
+    <!-- SHOW ADMIN LISTS -->
     <ui-table
       v-if="!this.openCreateForm && !this.openUpdateForm"
       :headers="this.headers"
@@ -29,15 +29,18 @@
         </td>
       </tr>
     </ui-table>
+    <div v-if="!this.data.length" class="text-center pt-10">
+      <p class="headline">No Data Found</p>
+    </div>
 
-    <!-- EMPLOYEE CREATE FORM -->
+    <!-- ADMIN CREATE FORM -->
     <admin-create-form
       v-if="this.openCreateForm"
       @cancel="handleCancel"
       @submit="handleSubmit"
     ></admin-create-form>
 
-    <!-- EMPLOYEE UPDATE FORM -->
+    <!-- ADMIN UPDATE FORM -->
     <admin-update-form
       v-if="this.openUpdateForm"
       @cancel="handleCancel"
@@ -56,26 +59,7 @@ export default {
     return {
       openCreateForm: false,
       openUpdateForm: false,
-      data: [
-        {
-          name: 'Rahim',
-          title: 'Frontend Developer',
-          email: 'rahim@gmail.com',
-          phone: '01866389828',
-        },
-        {
-          name: 'Karim',
-          title: 'Backend Developer',
-          email: 'karim@gmail.com',
-          phone: '01666389828',
-        },
-        {
-          name: 'Kuddus',
-          title: 'Backend Developer',
-          email: 'kuddus@gmail.com',
-          phone: '01766389828',
-        },
-      ],
+      data: [],
       headers: [
         {
           label: 'Name',
@@ -108,5 +92,8 @@ export default {
       this.openCreateForm = false
     },
   },
+  beforeMount(){
+    this.data = this.$store.state.Admin.adminLists;
+  }
 }
 </script>
