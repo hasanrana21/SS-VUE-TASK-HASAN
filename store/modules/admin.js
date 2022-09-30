@@ -8,7 +8,7 @@ export default {
   mutations: {
     setAdmins: (state, data) => {
       data.id = state.adminLists.length + 1
-      state.adminLists.unshift(data)
+      state.adminLists.push(data)
     },
     setAdmin: (state, data) => {
       state.admin = data

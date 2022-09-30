@@ -12,10 +12,10 @@
         </span>
       </template>
       <tr v-for="(item, key) in data" :key="key">
-        <td class="title font-weight-regular py-4">{{ item.name }}</td>
-        <td class="title font-weight-regular py-4">{{ item.title }}</td>
-        <td class="title font-weight-regular py-4">{{ item.email }}</td>
-        <td class="title font-weight-regular py-4">{{ item.phone }}</td>
+        <td class="title font-weight-regular py-4">{{ item?.name }}</td>
+        <td class="title font-weight-regular py-4">{{ item?.title }}</td>
+        <td class="title font-weight-regular py-4">{{ item?.email }}</td>
+        <td class="title font-weight-regular py-4">{{ item?.phone }}</td>
         <td class="title font-weight-regular py-4">
           <span
             class="mdi mdi-square-edit-outline headline mr-6"
@@ -30,7 +30,7 @@
         </td>
       </tr>
     </ui-table>
-    <div v-if="!this.data.length" class="text-center pt-10">
+    <div v-if="!this.data.length && !this.openCreateForm" class="text-center pt-10">
       <p class="headline">No Data Found</p>
     </div>
 
