@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state: () => ({
     adminLists: [],
+    admin: {},
   }),
   actions: {},
   mutations: {
@@ -9,5 +10,19 @@ export default {
       data.id = state.adminLists.length + 1
       state.adminLists.unshift(data)
     },
+    setAdmin: (state, data) => {
+      state.admin = data
+    },
+    clearAdmin: (state) => {
+      state.admin = {}
+    },
+    updateAdmin: (state, data) => {
+        state.adminLists = state.adminLists.map((item) => {
+            if(item?.id === data?.id){
+                return {...item, ...data}
+            }
+            return item;
+        })
+    }
   },
 }

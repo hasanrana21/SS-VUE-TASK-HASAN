@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       formData: {
+        id: null,
         name: '',
         email: '',
         phone: '',
@@ -76,10 +77,10 @@ export default {
         if (item?.id === this.formData?.id) {
           return { ...item, ...this.formData }
         }
-        return item
+        return item;
       })
       this.$store.commit("Employee/updateEmployee", data);
-      this.$emit("submit")
+      this.$emit("submit");
       this.reset();
     },
     reset() {
@@ -89,7 +90,7 @@ export default {
   beforeMount() {
     let employee = this.$store.state.Employee.employee
     Object.keys(employee).map((key) => {
-      this.formData[key] = employee[key]
+      this.formData[key] = employee[key];
     })
   },
 }

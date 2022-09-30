@@ -20,7 +20,7 @@
           <span
             class="mdi mdi-square-edit-outline headline mr-6"
             style="cursor: pointer"
-            @click="openUpdateForm = true"
+            @click="handleAdminEdit(item)"
           ></span>
           <span
             class="mdi mdi-trash-can-outline headline"
@@ -36,14 +36,15 @@
     <!-- ADMIN CREATE FORM -->
     <admin-create-form
       v-if="this.openCreateForm"
-      @cancel="handleCancel"
+      @cancel="handleClose"
       @submit="handleSubmit"
     ></admin-create-form>
 
     <!-- ADMIN UPDATE FORM -->
     <admin-update-form
       v-if="this.openUpdateForm"
-      @cancel="handleCancel"
+      @close="handleClose"
+      @submit="handleSubmit"
     ></admin-update-form>
   </v-container>
 </template>
@@ -81,19 +82,24 @@ export default {
   },
   methods: {
     openForm() {
-      this.openCreateForm = true
-      console.log('ff', this.openCreateForm)
+      this.openCreateForm = true;
     },
-    handleCancel() {
+    handleClose() {
+      this.$store.commit("Admin/clearAdmin")
       this.openCreateForm = false
       this.openUpdateForm = false
     },
     handleSubmit() {
       this.openCreateForm = false
+      this.openUpdateForm = false
+    },
+    handleAdminEdit(item) {
+      this.$store.commit("Admin/setAdmin", item);
+      this.openUpdateForm = true;
     },
   },
-  beforeMount(){
-    this.data = this.$store.state.Admin.adminLists;
-  }
+  beforeMount() {
+    this.data = this.$store.state.Admin.adminLists
+  },
 }
 </script>
