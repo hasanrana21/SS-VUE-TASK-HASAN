@@ -17,16 +17,44 @@
         <td class="title font-weight-regular py-4">{{ item.email }}</td>
         <td class="title font-weight-regular py-4">{{ item.phone }}</td>
         <td class="title font-weight-regular py-4">
-          <span
-            class="mdi mdi-square-edit-outline headline mr-6"
-            style="cursor: pointer"
-            @click="handleUpdate(item)"
-          ></span>
-          <span
+          <v-btn @click="handleUpdate(item)" class="px-2 mr-4">
+            <span
+              class="mdi mdi-square-edit-outline headline"
+              style="cursor: pointer"
+            ></span>
+          </v-btn>
+          <!-- <span
             class="mdi mdi-trash-can-outline headline"
             style="cursor: pointer"
-            @click="employeeDelete(item)"
-          ></span>
+            @click.stop="this.dialog = true"
+          ></span> -->
+          <v-btn @click.stop="dialog = true" class="px-2">
+            <span
+              class="mdi mdi-trash-can-outline headline"
+              style="cursor: pointer"
+            ></span>
+          </v-btn>
+
+          <v-dialog v-model="dialog" max-width="290">
+            <v-card>
+              <v-card-title class="text-h6 text-center">
+                Are you sure for delete the employee?
+              </v-card-title>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn depressed color="primary" @click="dialog = false">
+                  Cancel
+                </v-btn>
+
+                <v-btn depressed color="error">
+                  <span @click="employeeDelete(item)" class="px-6">Yes</span>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
+          <!-- @click="employeeDelete(item)" -->
         </td>
       </tr>
     </ui-table>
@@ -59,6 +87,7 @@ export default {
   components: { UiTable, UiButton, EmployeeCreateForm, EmployeeUpdateForm },
   data() {
     return {
+      dialog: false,
       openCreateForm: false,
       openUpdateForm: false,
       data: [],
@@ -98,9 +127,10 @@ export default {
       this.openCreateForm = false
       this.openUpdateForm = false
     },
-    employeeDelete(item){
-      this.$store.commit("Employee/deleteEmployee", item)
-    }
+    employeeDelete(item) {
+      this.$store.commit('Employee/deleteEmployee', item)
+      this.dialog = false
+    },
   },
   beforeMount() {
     let lists = this.$store.state.Employee.employeeLists
