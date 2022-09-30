@@ -24,7 +24,7 @@
         type="number"
       ></v-text-field>
       <v-select
-        v-model="formData.type"
+        v-model="formData.title"
         :items="items"
         label="Select type"
       ></v-select>
@@ -45,7 +45,7 @@
           name: '',
           email: '',
           phone: '',
-          type: '',
+          title: '',
         },
         items: [
         'CEO',

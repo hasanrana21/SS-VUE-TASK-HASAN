@@ -24,7 +24,7 @@
       type="number"
     ></v-text-field>
     <v-select
-      v-model="formData.type"
+      v-model="formData.title"
       :items="items"
       label="Select type"
     ></v-select>
@@ -43,10 +43,11 @@ export default {
   data() {
     return {
       formData: {
+        id: null,
         name: '',
         email: '',
         phone: '',
-        type: '',
+        title: '',
       },
       items: [
         'CEO',
@@ -72,7 +73,8 @@ export default {
   },
   methods: {
     createEmployee() {
-      this.$store.commit('Employee/setEmployee', this.formData)
+      this.$store.commit('Employee/setEmployees', this.formData)
+      this.$emit("submit")
       this.reset()
     },
     reset() {

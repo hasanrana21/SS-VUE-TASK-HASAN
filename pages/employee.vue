@@ -20,7 +20,7 @@
           <span
             class="mdi mdi-square-edit-outline headline mr-6"
             style="cursor: pointer"
-            @click="openUpdateForm = true"
+            @click="handleUpdate(item)"
           ></span>
           <span
             class="mdi mdi-trash-can-outline headline"
@@ -29,17 +29,22 @@
         </td>
       </tr>
     </ui-table>
+    <div v-if="!this.data.length" class="text-center pt-10">
+      <p class="headline">No Data Show</p>
+    </div>
 
     <!-- EMPLOYEE CREATE FORM -->
     <employee-create-form
       v-if="this.openCreateForm"
-      @cancel="handleCancel"
+      @cancel="handleClose"
+      @submit="handleSubmit"
     ></employee-create-form>
 
     <!-- EMPLOYEE UPDATE FORM -->
     <employee-update-form
       v-if="this.openUpdateForm"
-      @cancel="handleCancel"
+      @close="handleClose"
+      @submit="handleSubmit"
     ></employee-update-form>
   </v-container>
 </template>
@@ -55,26 +60,7 @@ export default {
     return {
       openCreateForm: false,
       openUpdateForm: false,
-      data: [
-        {
-          name: 'Rahim',
-          title: 'Frontend Developer',
-          email: 'rahim@gmail.com',
-          phone: '01866389828',
-        },
-        {
-          name: 'Karim',
-          title: 'Backend Developer',
-          email: 'karim@gmail.com',
-          phone: '01666389828',
-        },
-        {
-          name: 'Kuddus',
-          title: 'Backend Developer',
-          email: 'kuddus@gmail.com',
-          phone: '01766389828',
-        },
-      ],
+      data: [],
       headers: [
         {
           label: 'Name',
@@ -97,12 +83,24 @@ export default {
   methods: {
     openForm() {
       this.openCreateForm = true
-      console.log('ff', this.openCreateForm)
     },
-    handleCancel() {
+    handleClose() {
+      this.$store.commit('Employee/clearEmployee')
       this.openCreateForm = false
       this.openUpdateForm = false
     },
+    handleUpdate(item) {
+      this.$store.commit('Employee/setEmployee', item)
+      this.openUpdateForm = true
+    },
+    handleSubmit() {
+      this.openCreateForm = false
+      this.openUpdateForm = false
+    },
+  },
+  beforeMount() {
+    let lists = this.$store.state.Employee.employeeLists
+    this.data = lists
   },
 }
 </script>
