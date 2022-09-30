@@ -34,6 +34,7 @@
     <admin-create-form
       v-if="this.openCreateForm"
       @cancel="handleCancel"
+      @submit="handleSubmit"
     ></admin-create-form>
 
     <!-- EMPLOYEE UPDATE FORM -->
@@ -102,6 +103,9 @@ export default {
     handleCancel() {
       this.openCreateForm = false
       this.openUpdateForm = false
+    },
+    handleSubmit() {
+      this.openCreateForm = false
     },
   },
 }

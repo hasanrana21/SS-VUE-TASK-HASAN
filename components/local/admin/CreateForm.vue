@@ -1,53 +1,54 @@
 <template>
-    <form @submit.prevent="updateEmployee">
-      <h2 class="display-1 mb-7 mt-2">Admin Create Form</h2>
-      <v-text-field
-        v-model="formData.name"
-        :rules="useValidation.nameRules"
-        label="Name"
-        required
-      ></v-text-field>
-  
-      <v-text-field
-        v-model="formData.email"
-        :rules="useValidation.emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
-  
-      <v-text-field
-        v-model="formData.phone"
-        :counter="11"
-        :rules="useValidation.phoneRules"
-        label="Phone"
-        required
-        type="number"
-      ></v-text-field>
-      <v-select
-        v-model="formData.title"
-        :items="items"
-        label="Select type"
-      ></v-select>
-      <ui-button type="submit" label="Save"></ui-button>
-      <span @click="$emit('cancel')">
-        <ui-button label="Cancel"></ui-button>
-      </span>
-    </form>
-  </template>
-  <script>
-  import UiButton from '@/components/ui/button/index.vue'
-  export default {
-    name: 'admin-create-form',
-    components: { UiButton },
-    data() {
-      return {
-        formData: {
-          name: '',
-          email: '',
-          phone: '',
-          title: '',
-        },
-        items: [
+  <form ref="form" @submit.prevent="createAdmin">
+    <h2 class="display-1 mb-7 mt-2">Admin Create Form</h2>
+    <v-text-field
+      v-model="formData.name"
+      :rules="useValidation.nameRules"
+      label="Name"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="formData.email"
+      :rules="useValidation.emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="formData.phone"
+      :counter="11"
+      :rules="useValidation.phoneRules"
+      label="Phone"
+      required
+      type="number"
+    ></v-text-field>
+    <v-select
+      v-model="formData.title"
+      :items="items"
+      label="Select type"
+    ></v-select>
+    <ui-button type="submit" label="Save"></ui-button>
+    <span @click="$emit('cancel')">
+      <ui-button label="Cancel"></ui-button>
+    </span>
+  </form>
+</template>
+<script>
+import UiButton from '@/components/ui/button/index.vue'
+export default {
+  name: 'admin-create-form',
+  components: { UiButton },
+  data() {
+    return {
+      formData: {
+        id: null,
+        name: '',
+        email: '',
+        phone: '',
+        title: '',
+      },
+      items: [
         'CEO',
         'CTO',
         'Frontend Developer',
@@ -55,25 +56,29 @@
         'Project Manager',
         'Team Lead',
       ],
-        useValidation: {
-          nameRules: [(v) => !!v || 'Name is required'],
-  
-          emailRules: [
-            (v) => !!v || 'E-mail is required',
-            (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-          ],
-          phoneRules: [
-            (v) => !!v || 'Phone number is required',
-            (v) => (v && v.length == 11) || 'Number must be 11 characters',
-          ],
-        },
-      }
-    },
-    methods: {
-      updateEmployee() {
-        console.log('created employee', this.formData)
+      useValidation: {
+        nameRules: [(v) => !!v || 'Name is required'],
+
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ],
+        phoneRules: [
+          (v) => !!v || 'Phone number is required',
+          (v) => (v && v.length == 11) || 'Number must be 11 characters',
+        ],
       },
+    }
+  },
+  methods: {
+    createAdmin() {
+      this.$store.commit('Admin/setAdmins', this.formData)
+      this.$emit("submit")
+      this.reset();
     },
-  }
-  </script>
-  
+    reset() {
+      this.$refs.form.reset()
+    },
+  },
+}
+</script>

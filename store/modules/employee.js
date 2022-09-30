@@ -14,12 +14,6 @@ export default {
       state.employee = data
     },
     updateEmployee: (state, data) => {
-      // state.employeeLists = state.employeeLists.map((item) => {
-      //   if (item?.id === data?.id) {
-      //     return { ...item, ...data }
-      //   }
-      //   return item
-      // })
       state.employeeLists = data;
     },
     clearEmployee: (state) => {
