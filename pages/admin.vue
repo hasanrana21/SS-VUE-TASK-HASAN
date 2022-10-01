@@ -30,7 +30,10 @@
         </td>
       </tr>
     </ui-table>
-    <div v-if="!this.data.length && !this.openCreateForm" class="text-center pt-10">
+    <div
+      v-if="!this.data.length && !this.openCreateForm"
+      class="text-center pt-10"
+    >
       <p class="headline">No Data Found</p>
     </div>
 
@@ -83,10 +86,10 @@ export default {
   },
   methods: {
     openForm() {
-      this.openCreateForm = true;
+      this.openCreateForm = true
     },
     handleClose() {
-      this.$store.commit("Admin/clearAdmin")
+      this.$store.commit('Admin/clearAdmin')
       this.openCreateForm = false
       this.openUpdateForm = false
     },
@@ -95,12 +98,25 @@ export default {
       this.openUpdateForm = false
     },
     handleAdminEdit(item) {
-      this.$store.commit("Admin/setAdmin", item);
-      this.openUpdateForm = true;
+      this.$store.commit('Admin/setAdmin', item)
+      this.openUpdateForm = true
     },
-    deleteAdmin(item){
-      this.$store.commit("Admin/deleteAdmin", item);
-    }
+    deleteAdmin(item) {
+      this.$swal({
+        title: 'Are you sure for delete the admin?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.$store.commit('Admin/deleteAdmin', item)
+          this.$swal('Deleted!', 'Your file has been deleted.', 'success')
+        }
+      })
+    },
   },
   beforeMount() {
     this.data = this.$store.state.Admin.adminLists
