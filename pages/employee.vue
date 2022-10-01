@@ -93,11 +93,16 @@ export default {
       this.openCreateForm = false
       this.openUpdateForm = false
     },
+    fetchEmployee() {
+      let lists = this.$store.state.Employee.employeeLists
+      this.data = lists
+    },
     handleUpdate(item) {
       this.$store.commit('Employee/setEmployee', item)
       this.openUpdateForm = true
     },
     handleSubmit() {
+      this.fetchEmployee()
       this.openCreateForm = false
       this.openUpdateForm = false
     },
@@ -114,29 +119,13 @@ export default {
         if (result.isConfirmed) {
           this.$store.commit('Employee/deleteEmployee', item)
           this.$swal('Deleted!', 'Your file has been deleted.', 'success')
-        }
-      })
-    },
-    dont() {
-      this.$swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.employeeDelete()
-          this.$swal('Deleted!', 'Your file has been deleted.', 'success')
+          this.fetchEmployee()
         }
       })
     },
   },
   beforeMount() {
-    let lists = this.$store.state.Employee.employeeLists
-    this.data = lists
+    this.fetchEmployee()
   },
 }
 </script>

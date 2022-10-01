@@ -93,7 +93,11 @@ export default {
       this.openCreateForm = false
       this.openUpdateForm = false
     },
+    fetchAdmin() {
+      this.data = this.$store.state.Admin.adminLists
+    },
     handleSubmit() {
+      this.fetchAdmin()
       this.openCreateForm = false
       this.openUpdateForm = false
     },
@@ -114,12 +118,13 @@ export default {
         if (result.isConfirmed) {
           this.$store.commit('Admin/deleteAdmin', item)
           this.$swal('Deleted!', 'Your file has been deleted.', 'success')
+          this.fetchAdmin()
         }
       })
     },
   },
   beforeMount() {
-    this.data = this.$store.state.Admin.adminLists
+    this.fetchAdmin()
   },
 }
 </script>
