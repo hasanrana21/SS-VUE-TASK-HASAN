@@ -3,13 +3,13 @@
     <v-app id="inspire">
       <v-main>
         <v-container>
-          <h2 class="display-2 mb-7">Employee Lists</h2>
+          <h2 class="display-2 mb-7">Employee</h2>
           <v-row>
             <v-col v-for="(item, key) in this.employees" :key="key" cols="4">
               <ui-card :data="item">
                 <nuxt-link to="/employee">
                   <v-btn class="" outlined rounded small>
-                    GO TO
+                    GO TO LISTS
                   </v-btn>
                 </nuxt-link>
               </ui-card>
@@ -17,13 +17,13 @@
           </v-row>
         </v-container>
         <v-container class="mt-14">
-          <h2 class="display-2 mb-7">Admin Lists</h2>
+          <h2 class="display-2 mb-7">Admin</h2>
           <v-row>
             <v-col v-for="(item, key) in this.admins" :key="key" cols="4">
               <ui-card :data="item">
                 <nuxt-link to="/admin">
                   <v-btn class="" outlined rounded small>
-                    GO TO
+                    GO TO LISTS
                   </v-btn>
                 </nuxt-link>
               </ui-card>

@@ -3,7 +3,7 @@
     <v-app-bar color="deep-purple px-12">
       <nuxt-link to="/">
         <v-toolbar-title class="white--text display-1"
-          >NuxtTask</v-toolbar-title
+          >SayburghTask</v-toolbar-title
         >
       </nuxt-link>
 

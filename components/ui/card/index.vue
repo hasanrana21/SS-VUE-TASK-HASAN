@@ -29,8 +29,8 @@
         </div>
       </div>
 
-      <v-avatar class="ma-3" size="120" tile>
-        <v-img src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"></v-img>
+      <v-avatar class="ma-3 rounded" size="120" tile>
+        <v-img :src="data.imageUrl"></v-img>
       </v-avatar>
     </div>
   </v-card>
