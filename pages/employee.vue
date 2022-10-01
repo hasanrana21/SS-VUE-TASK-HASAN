@@ -102,7 +102,36 @@ export default {
       this.openUpdateForm = false
     },
     employeeDelete(item) {
-      this.$store.commit('Employee/deleteEmployee', item)
+      this.$swal({
+        title: 'Are you sure for delete the employee?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.$store.commit('Employee/deleteEmployee', item)
+          this.$swal('Deleted!', 'Your file has been deleted.', 'success')
+        }
+      })
+    },
+    dont() {
+      this.$swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.employeeDelete()
+          this.$swal('Deleted!', 'Your file has been deleted.', 'success')
+        }
+      })
     },
   },
   beforeMount() {
