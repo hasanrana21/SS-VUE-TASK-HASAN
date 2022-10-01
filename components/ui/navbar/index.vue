@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-app-bar color="deep-purple px-12">
-      <v-toolbar-title class="white--text display-1">Logo</v-toolbar-title>
+      <nuxt-link to="/">
+        <v-toolbar-title class="white--text display-1"
+          >NuxtTask</v-toolbar-title
+        >
+      </nuxt-link>
 
       <v-spacer></v-spacer>
 
