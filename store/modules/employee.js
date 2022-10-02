@@ -1,7 +1,24 @@
 export default {
   namespaced: true,
   state: () => ({
-    employeeLists: [],
+    employeeLists: [
+      {
+        id: 1,
+        name: 'Logan Barr',
+        email: 'nyga@mailinator.com',
+        phone: '62345674233',
+        title: 'Frontend Developer',
+        imageUrl: '',
+      },
+      {
+        id: 2,
+        name: 'Mary Crane',
+        email: 'divip@mailinator.com',
+        phone: '17222222222',
+        title: 'Team Lead',
+        imageUrl: '',
+      },
+    ],
     employee: {},
   }),
   actions: {},
@@ -20,7 +37,9 @@ export default {
       state.employee = {}
     },
     deleteEmployee: (state, data) => {
-      state.employeeLists = state.employeeLists.filter((item) => item?.id !== data?.id);
+      state.employeeLists = state.employeeLists.filter(
+        (item) => item?.id !== data?.id
+      )
     },
   },
 }
