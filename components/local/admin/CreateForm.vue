@@ -23,12 +23,6 @@
       required
       type="number"
     ></v-text-field>
-    <!-- <v-file-input
-      show-size
-      value="uploadImg"
-      label="Image"
-    ></v-file-input> -->
-    <input type="file" @change="uploadImg">
 
     <v-select
       v-model="formData.title"
@@ -55,7 +49,6 @@ export default {
         email: '',
         phone: '',
         title: '',
-        imageUrl: "",
       },
       items: [
         'CEO',
@@ -87,18 +80,6 @@ export default {
     },
     reset() {
       this.$refs.form.reset()
-    },
-    uploadImg(e) {
-      const file = e.target.files[0]
-      this.convertBase64(file)
-    },
-    convertBase64(file){
-      const reader = new FileReader();
-      reader.onload = (e) =>{
-        console.log(e.target.result)
-        this.formData.imageUrl = e.target.result;
-      }
-      reader.readAsDataURL(file);
     },
   },
 }
