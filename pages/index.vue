@@ -34,6 +34,12 @@
               </nuxt-link>
             </ui-card>
           </v-col>
+          <v-col
+            v-if="!this.employees.length"
+            class="text-center pt-10"
+          >
+            <p class="headline">No Data Found...</p>
+          </v-col>
         </v-row>
       </v-container>
       <v-container class="mt-14">
@@ -45,6 +51,12 @@
                 <v-btn class="" outlined rounded small> GO TO LISTS </v-btn>
               </nuxt-link>
             </ui-card>
+          </v-col>
+          <v-col
+            v-if="!this.admins.length"
+            class="text-center pt-10"
+          >
+            <p class="headline">No Data Found...</p>
           </v-col>
         </v-row>
       </v-container>
@@ -59,12 +71,12 @@
           fill-dot
         >
           <v-card :color="item.color" dark>
-            <v-card-title class="text-h4"> {{item.title}} </v-card-title>
+            <v-card-title class="text-h4"> {{ item.title }} </v-card-title>
             <v-card-text class="white text--primary pt-4">
               <p>
-                {{item.description}}
+                {{ item.description }}
               </p>
-                <v-btn color="indigo" outlined rounded small> See Feature </v-btn>
+              <v-btn color="indigo" outlined rounded small> See Feature </v-btn>
             </v-card-text>
           </v-card>
         </v-timeline-item>
@@ -84,26 +96,30 @@ export default {
       admins: [],
       items: [
         {
-          title: "About Our Employees",
-          description: "scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.",
+          title: 'About Our Employees',
+          description:
+            'scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.',
           color: 'red lighten-2',
           icon: 'mdi-star',
         },
         {
-          title: "About Our Admins",
-          description: "scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.",
+          title: 'About Our Admins',
+          description:
+            'scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.',
           color: 'purple darken-1',
           icon: 'mdi-book-variant',
         },
         {
-          title: "Planning for Company",
-          description: "scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.",
+          title: 'Planning for Company',
+          description:
+            'scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.',
           color: 'green lighten-1',
           icon: 'mdi-airballoon',
         },
         {
-          title: "Investigation Sections",
-          description: "scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.",
+          title: 'Investigation Sections',
+          description:
+            'scaevola imperdiet nec ut, sed euismod convenire principes at.Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.',
           color: 'indigo',
           icon: 'mdi-buffer',
         },
