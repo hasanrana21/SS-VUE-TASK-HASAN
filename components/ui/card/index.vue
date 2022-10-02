@@ -1,22 +1,4 @@
 <template>
-  <!-- <v-card class="mx-auto" color="#26c6da" dark max-width="400">
-    <v-card-title>
-      <span class="text-h6 font-weight-light">{{ data.title }}</span>
-    </v-card-title>
-
-    <v-card-text class="title">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error cum odit,
-      rem corrupti possimus voluptate perferendis ipsum tempore. Nisi, adipisci?
-    </v-card-text>
-
-    <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-title class="title"> {{ data.name }}</v-list-item-title>
-
-        <slot />
-      </v-list-item>
-    </v-card-actions>
-  </v-card> -->
   <v-card
     color="blue-grey darken-1
 "

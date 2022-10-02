@@ -20,7 +20,7 @@
         </div>
       </v-col>
       <v-col cols="6">
-        <h5>asdfasdf</h5>
+        <!-- <h5>asdfasdf</h5> -->
       </v-col>
     </v-row>
     <v-main class="py-7" style="background-color: #ede7f6">
