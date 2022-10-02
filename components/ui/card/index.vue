@@ -17,7 +17,12 @@
       </v-list-item>
     </v-card-actions>
   </v-card> -->
-  <v-card color="#1F7087" dark height="160px">
+  <v-card
+    color="blue-grey darken-1
+"
+    dark
+    height="160px"
+  >
     <div class="d-flex flex-no-wrap justify-space-between">
       <div>
         <v-card-title class="text-h6" v-text="data.title"></v-card-title>
