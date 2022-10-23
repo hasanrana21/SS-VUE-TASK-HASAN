@@ -1,23 +1,25 @@
 <template>
-  <v-card class="mx-auto" color="#26c6da" dark max-width="400">
-    <v-card-title>
-      <span class="text-h6 font-weight-light">{{ data.title }}</span>
-    </v-card-title>
+  <v-card
+    color="blue-grey darken-1
+"
+    dark
+    height="160px"
+  >
+    <div class="d-flex flex-no-wrap justify-space-between">
+      <div>
+        <v-card-title class="text-h6" v-text="data.title"></v-card-title>
 
-    <v-card-text class="title">
-      {{ data.description }}
-    </v-card-text>
+        <v-card-subtitle v-text="data.name"></v-card-subtitle>
 
-    <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-title> {{ data.name }}</v-list-item-title>
-
-        <div class="d-flex">
-          <span class="mr-5" style="cursor: pointer">Edit</span>
-          <span style="cursor: pointer">Delete</span>
+        <div class="pa-4">
+          <slot />
         </div>
-      </v-list-item>
-    </v-card-actions>
+      </div>
+
+      <v-avatar class="ma-3 rounded" size="120" tile>
+        <v-img :src="data.imageUrl"></v-img>
+      </v-avatar>
+    </div>
   </v-card>
 </template>
 <script>

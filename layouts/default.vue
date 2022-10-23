@@ -2,14 +2,16 @@
   <v-app>
     <navbar></navbar>
     <Nuxt />
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import Navbar from '@/components/ui/navbar/index.vue'
+import Navbar from '@/components/common/navbar/index.vue'
+import Footer from '@/components/common/footer/index.vue'
 export default {
   name: 'DefaultLayout',
-  components: { Navbar },
+  components: { Navbar, Footer },
   data() {
     return {
       clipped: false,
