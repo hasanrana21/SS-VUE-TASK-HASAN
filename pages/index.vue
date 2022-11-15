@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-row class="banner-wrapper">
+    this ishome
+    <!-- <v-row class="banner-wrapper">
       <v-col
         cols="6"
         class="d-flex justify-center align-center"
@@ -20,7 +21,6 @@
         </div>
       </v-col>
       <v-col cols="6">
-        <!-- <h5>asdfasdf</h5> -->
       </v-col>
     </v-row>
     <v-main class="py-7" style="background-color: #ede7f6">
@@ -81,7 +81,7 @@
           </v-card>
         </v-timeline-item>
       </v-timeline>
-    </v-container>
+    </v-container> -->
   </div>
 </template>
 

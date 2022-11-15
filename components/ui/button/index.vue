@@ -1,7 +1,7 @@
 <template>
-    <v-btn class="ma-2 px-12 rounded-lg" outlined color="indigo">
+    <span class="hover:transition ease-out duration-300 px-6 py-1 rounded border border-primary-3 hover:border-primary-2 hover:text-white text-lg text-white cursor-pointer hover:bg-primary-2 text-primary-3">
       {{ label }}
-    </v-btn>
+    </span>
   </template>
   <script>
   export default {
