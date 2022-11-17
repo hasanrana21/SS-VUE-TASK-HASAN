@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="bg-primary-3/10">
     <navbar></navbar>
     <Nuxt />
-    <Footer></Footer>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 
