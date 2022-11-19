@@ -1,9 +1,9 @@
 <template>
-  <v-app>
+  <div class="bg-primary-3/10">
     <navbar></navbar>
     <Nuxt />
-    <Footer></Footer>
-  </v-app>
+    <!-- <Footer></Footer> -->
+  </div>
 </template>
 
 <script>

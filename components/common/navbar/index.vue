@@ -1,29 +1,27 @@
 <template>
-  <div>
-    <v-app-bar color="deep-purple px-12">
-      <nuxt-link to="/" style="text-decoration:none">
-        <v-toolbar-title class="white--text display-1"
-          >SayburghTask</v-toolbar-title
-        >
-      </nuxt-link>
+  <div class="navbar">
+    <nuxt-link to="/" class="navbar__logo" style="text-decoration: none">
+      <img
+        src="https://www.rokomari.com/static/200/images/rokomari_logo.png"
+        alt=""
+      />
+    </nuxt-link>
 
-      <v-spacer></v-spacer>
-
-      <div v-for="(item, key) in this.navMenu" :key="key">
-        <nuxt-link :to="item.to">
-          <span
-            v-text="item.label"
-            class="mx-4 white--text title"
-            style="cursor: pointer"
-          ></span>
-        </nuxt-link>
-      </div>
-    </v-app-bar>
+    <!-- <div class=""> -->
+    <ui-input inputWrapper="col-span-4"></ui-input>
+    <!-- </div> -->
+    <div class="navbar__nav">
+      <span class="mdi mdi-cart-variant text-5xl"></span>
+      <ui-button label="Login"></ui-button>
+    </div>
   </div>
 </template>
 <script>
+import UiInput from '@/components/ui/input/index.vue'
+import UiButton from '@/components/ui/button/index.vue'
 export default {
   name: 'ui-navbar',
+  components: { UiInput, UiButton },
   data() {
     return {
       navMenu: [
@@ -40,3 +38,16 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.navbar {
+  /* grid grid-flow-row grid-cols-3 gap-4 */
+  @apply grid grid-flow-row grid-cols-6 gap-4 items-center space-x-4 bg-white px-36 py-4;
+}
+.navbar__logo {
+  @apply col-span-1;
+}
+.navbar__nav {
+  @apply flex justify-end items-center space-x-4 col-span-1;
+}
+</style>
