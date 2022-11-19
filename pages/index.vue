@@ -1,14 +1,21 @@
 <template>
   <div class="p-20">
-    <books></books>
+    <ui-section>
+      <home-books></home-books>
+    </ui-section>
+    <ui-section>
+      <home-category :categories="categories"></home-category>
+    </ui-section>
   </div>
 </template>
 
 <script>
-import Books from '@/components/local/home/Books.vue'
+import HomeBooks from '@/components/local/home/Books.vue'
+import HomeCategory from '@/components/local/home/Category.vue'
+import UiSection from '@/components/ui/section/index.vue'
 export default {
   name: 'IndexPage',
-  components: { Books },
+  components: { HomeBooks, HomeCategory, UiSection },
   data() {
     return {
       employees: [],
@@ -42,6 +49,13 @@ export default {
           color: 'indigo',
           icon: 'mdi-buffer',
         },
+      ],
+      categories: [
+        'উপন্যাস',
+        'ইসলামি বই',
+        'কমিকস ও ছবির গল্প',
+        'কম্পিউটার ও ফ্রিল্যান্সিং',
+        'কৃষি ও কৃষক',
       ],
     }
   },

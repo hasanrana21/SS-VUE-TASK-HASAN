@@ -1,12 +1,12 @@
 <template lang="">
-  <div class="p-5 bg-white">
+  <div class="">
     <ui-card :data="this.books"></ui-card>
   </div>
 </template>
 <script>
 import UiCard from '@/components/ui/card/index.vue'
 export default {
-  name: 'books-section',
+  name: 'home-books',
   components: { UiCard },
   data() {
     return {
