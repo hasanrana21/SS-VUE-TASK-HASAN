@@ -1,12 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  imports: {
+    autoImport: false,
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: 'ss-vue-task-hasan',
+    titleTemplate: 'BookWorm',
     title: '',
     htmlAttrs: {
       lang: 'en',
@@ -21,9 +24,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/main.css',
-  ],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

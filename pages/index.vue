@@ -1,21 +1,22 @@
 <template>
-  <div class="p-20">
+  <ui-page-wrapper>
     <ui-section>
       <home-books></home-books>
     </ui-section>
     <ui-section>
       <home-category :categories="categories"></home-category>
     </ui-section>
-  </div>
+  </ui-page-wrapper>
 </template>
 
 <script>
+import UiPageWrapper from '@/components/ui/page-wrapper/index.vue'
 import HomeBooks from '@/components/local/home/Books.vue'
 import HomeCategory from '@/components/local/home/Category.vue'
 import UiSection from '@/components/ui/section/index.vue'
 export default {
   name: 'IndexPage',
-  components: { HomeBooks, HomeCategory, UiSection },
+  components: { UiPageWrapper, HomeBooks, HomeCategory, UiSection },
   data() {
     return {
       employees: [],

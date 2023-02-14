@@ -11,7 +11,9 @@
           <span class="line-through mr-2">TK. {{ item.old_price }}</span>
           <span class="">TK. {{ item.price }}</span>
         </h3>
-        <ui-button label="View Details"></ui-button>
+        <router-link to="/product-details">
+          <ui-button label="View Details"></ui-button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -23,7 +25,7 @@ export default {
   components: { UiButton },
   props: {
     data: {
-      type: Object,
+      type: Array,
       required: false,
     },
   },

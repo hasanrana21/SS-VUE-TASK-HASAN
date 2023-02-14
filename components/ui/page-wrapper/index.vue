@@ -1,9 +1,11 @@
 <template>
-  <div class="p-10 bg-white mb-10 rounded drop-shadow-lg">
+  <div class="px-20 py-5">
     <slot />
   </div>
 </template>
 <script>
-export default {}
+export default {
+  name: 'ui-page-wrapper',
+}
 </script>
 <style scoped></style>
